@@ -36,3 +36,6 @@ yarn-error.*
 
 # Yarn
 /.yarn
+
+# direnv
+/.direnv
