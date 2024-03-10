@@ -1,0 +1,18 @@
+rootProject.name = 'TrashLog'
+
+dependencyResolutionManagement {
+  versionCatalogs {
+    reactAndroidLibs {
+      from(files(new File(["/nix/store/85siw3p53ki5lldcshgah2rrlrcgi527-nodejs-18.19.1/bin/node", "--print", "require.resolve('react-native/package.json')"].execute(null, rootDir).text.trim(), "../gradle/libs.versions.toml")))
+    }
+  }
+}
+
+apply from: new File(["/nix/store/85siw3p53ki5lldcshgah2rrlrcgi527-nodejs-18.19.1/bin/node", "--print", "require.resolve('expo/package.json')"].execute(null, rootDir).text.trim(), "../scripts/autolinking.gradle");
+useExpoModules()
+
+apply from: new File(["/nix/store/85siw3p53ki5lldcshgah2rrlrcgi527-nodejs-18.19.1/bin/node", "--print", "require.resolve('@react-native-community/cli-platform-android/package.json', { paths: [require.resolve('react-native/package.json')] })"].execute(null, rootDir).text.trim(), "../native_modules.gradle");
+applyNativeModulesSettingsGradle(settings)
+
+include ':app'
+includeBuild(new File(["/nix/store/85siw3p53ki5lldcshgah2rrlrcgi527-nodejs-18.19.1/bin/node", "--print", "require.resolve('@react-native/gradle-plugin/package.json', { paths: [require.resolve('react-native/package.json')] })"].execute(null, rootDir).text.trim()).getParentFile())
